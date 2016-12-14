@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://ev1l.cn">
+  <title>你需要一个老头，帮助你理解下 Python 中的 yeild | 灰色地带</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题外话
+
+最初接触 Python 这门语言的时候，看的是《Python 核心编程》 迷迷糊糊的把 yeild 这里看过去了，知道这个东西是用来造一个生成器用的，就一带而过了，日后的搬砖过程中也不知道怎么用这个家伙事儿。
+我比较笨，学东西讨厌文档型说明（看不懂QAQ）。所以总是自己花很长时间去加工适合我的食物。
+
+
+
+
+
+
+说起 yeild，那这到底是个什么玩意？准备好了，我要开始背课文了：……">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你需要一个老头，帮助你理解下 Python 中的 yeild">
+<meta property="og:url" content="http://ev1l.cn/2016/12/14/python_yeild1/index.html">
+<meta property="og:site_name" content="灰色地带">
+<meta property="og:description" content="题外话
+
+最初接触 Python 这门语言的时候，看的是《Python 核心编程》 迷迷糊糊的把 yeild 这里看过去了，知道这个东西是用来造一个生成器用的，就一带而过了，日后的搬砖过程中也不知道怎么用这个家伙事儿。
+我比较笨，学东西讨厌文档型说明（看不懂QAQ）。所以总是自己花很长时间去加工适合我的食物。
+
+
+
+
+
+
+说起 yeild，那这到底是个什么玩意？准备好了，我要开始背课文了：……">
+<meta property="og:updated_time" content="2016-12-14T08:29:54.026Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你需要一个老头，帮助你理解下 Python 中的 yeild">
+<meta name="twitter:description" content="题外话
+
+最初接触 Python 这门语言的时候，看的是《Python 核心编程》 迷迷糊糊的把 yeild 这里看过去了，知道这个东西是用来造一个生成器用的，就一带而过了，日后的搬砖过程中也不知道怎么用这个家伙事儿。
+我比较笨，学东西讨厌文档型说明（看不懂QAQ）。所以总是自己花很长时间去加工适合我的食物。
+
+
+
+
+
+
+说起 yeild，那这到底是个什么玩意？准备好了，我要开始背课文了：……">
+  
+    <link rel="alternative" href="/atom.xml" title="灰色地带" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/Image/zzh-min.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">GeekaLeo</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">活在你的夜里</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/Leo/">随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/jazhLeo" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/GeekaLeo" title="weibo"><i class="icon-weibo"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">GeekaLeo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/Image/zzh-min.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">GeekaLeo</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">活在你的夜里</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/Leo/">随笔</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/jazhLeo" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/GeekaLeo" title="weibo"><i class="icon-weibo"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-python_yeild1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      你需要一个老头，帮助你理解下 Python 中的 yeild
+    </h1>
+  
+
+        <a href="/2016/12/14/python_yeild1/" class="archive-article-date">
+  	<time datetime="2016-12-14T08:01:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-14</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>题外话</strong></p>
+<ul>
+<li>最初接触 Python 这门语言的时候，看的是《Python 核心编程》 迷迷糊糊的把 <code>yeild</code> 这里看过去了，知道这个东西是用来造一个<code>生成器</code>用的，就一带而过了，日后的搬砖过程中也不知道怎么用这个家伙事儿。</li>
+<li>我比较笨，学东西讨厌文档型说明（看不懂QAQ）。所以总是自己花很长时间去加工适合我的食物。</li>
+<li><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=33211676&auto=0&height=66"></iframe>
+
+</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="说起-yeild，那这到底是个什么玩意？"><a href="#说起-yeild，那这到底是个什么玩意？" class="headerlink" title="说起 yeild，那这到底是个什么玩意？"></a>说起 <code>yeild</code>，那这到底是个什么玩意？</h3><p>准备好了，我要开始背课文了：<br>……<br><a id="more"></a><br>从小脑袋不好使，记不住……<br>还是编故事吧：</p>
+<p>有个叫斐波那契的老头（也可能是女的，跟我有什么关系），提出了一个（不明白他搞出这东西要干啥的）数列定义（斐波那契数列）：</p>
+<blockquote>
+<p>有一串数字，前两个是1，从第三个开始，每个数字都是它前两位数字的和。（1, 1, 2, 3, 5, 8, 13……）</p>
+</blockquote>
+<p>提出定义的人我可以理解为他无聊，但是后来一群抠脚大汉开始对第N个数是多少那么感兴趣是什么鬼？这玩意算出来能干啥？（不知道）</p>
+<p>不行，我也要凑热闹。（koujiao……）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fab</span><span class="params">(max)</span>:</span></div><div class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> n &lt; max:</div><div class="line">        <span class="keyword">print</span> b</div><div class="line">        a, b = b, a + b</div><div class="line">        n = n + <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>好，跑一下试试。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>fab(<span class="number">5</span>)</div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">5</span></div></pre></td></tr></table></figure></p>
+<p>结果是对的，你以为这就完了？<br>隔壁王叔叔表示小伙子你这个写的有点问题啊，你这个直接<code>print</code>出来的，只能给我看，不能让我直接拿来用啊（你用它能干嘛？[手动黑人问号]）<br>好，那就听您老的，给你返回一个 List 让你用（？？？）。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fab</span><span class="params">(max)</span>:</span></div><div class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line">    list = []</div><div class="line">    <span class="keyword">while</span> n &lt; max:</div><div class="line">        list.append(b)</div><div class="line">        a, b = b, a + b</div><div class="line">        n = n + <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> list</div></pre></td></tr></table></figure></p>
+<p>来，试一下。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> n <span class="keyword">in</span> fab(<span class="number">5</span>):</div><div class="line"><span class="meta">... </span>    <span class="keyword">print</span> n</div><div class="line">...</div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">5</span></div></pre></td></tr></table></figure></p>
+<p>隔壁王叔叔的丈母娘（跟直系亲属姥姥不是一个人，谢谢)表示，小伙子你这个程序太特么占内存了，我输入大一点，这个List占用的内存都够我玩刺客信条大革命了（excuse me??)。</p>
+<h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><p>如果对python有一些了解的话，我们能很自然的想到一个经常拿来装逼的东西<code>xrange</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>): </div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="comment"># 2</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1000</span>):</div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure></p>
+<p>上面的两种写法，第一种是直接生成 1000个元素的List，相当于一次性给你一年的生活费。 而第二种是每次循环用到的时候给你一个，再用到再给你一个，可以理解为他有一个算式，每次你找他要钱他都要当场算算，然后给你一天的生活费。那用第二种方法吧。（看起来很扣的样子）</p>
+<p>好，实现一个。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fab</span><span class="params">(object)</span>:</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, max)</span>:</span></div><div class="line">        self.max = max</div><div class="line">        self.n, self.a, self.b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.n &lt; self.max:</div><div class="line">            r = self.b</div><div class="line">            self.a, self.b = self.b, self.a + self.b</div><div class="line">            self.n = self.n + <span class="number">1</span></div><div class="line">            <span class="keyword">return</span> r</div><div class="line">        <span class="keyword">raise</span> StopIteration()</div></pre></td></tr></table></figure></p>
+<p>基础差的看不懂的，其实上面的代码就是定义了一个算法，你每次问我要一个数，我就当场算一个数，不会像上一个版本直接返回给你一个List。<br>我们来调用一下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> n <span class="keyword">in</span> Fab(<span class="number">5</span>):</div><div class="line"><span class="meta">... </span>    <span class="keyword">print</span> n</div><div class="line">...</div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">5</span></div></pre></td></tr></table></figure></p>
+<p>嗯，成功了，这个版本性能是有了，可是隔壁王叔叔的侄女看了看代码不愿意了，帅哥（为什么要说出来？）你这个程序看着太复杂了啊，本来那么简单的代码怎么写的这么复杂啊？你这个人好复杂啊。</p>
+<p>很好小姑娘，你要是王叔叔，我特么把你家网线煮了。看在你说的挺有道理的份上（其实是长得好看），我看看能不能简单点。</p>
+<p>来，我们用一种高逼格的东西，兼顾简洁与性能，嘤嘤嘤。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fab</span><span class="params">(max)</span>:</span></div><div class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> n &lt; max:</div><div class="line">        <span class="keyword">yield</span> b</div><div class="line">        <span class="comment"># print b</span></div><div class="line">        a, b = b, a + b</div><div class="line">        n = n + <span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>跟最初的第一个版本很像，注释掉了<code>print b</code>这句话，加上了 <code>yield b</code>。这里我们先调用下，看看结果。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> n <span class="keyword">in</span> fab(<span class="number">5</span>):</div><div class="line"><span class="meta">... </span>    <span class="keyword">print</span> n</div><div class="line">...</div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">5</span></div></pre></td></tr></table></figure></p>
+<h3 id="吹牛B模式已开启"><a href="#吹牛B模式已开启" class="headerlink" title="吹牛B模式已开启"></a>吹牛B模式已开启</h3><p>ok, 现在来回想下我们一路走过来，从最初的版本到使用<code>yeild</code>之前，经历了哪些改动？<br>仔细对照第一次的例子和这个使用<code>yeild</code>的例子，好像差不多？再看看我们测试结果的代码有什么不同。<br>就是这里了<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 第一个例子</span></div><div class="line">fab(<span class="number">5</span>)</div><div class="line"></div><div class="line"><span class="comment"># yeild例子</span></div><div class="line"><span class="keyword">for</span> n <span class="keyword">in</span> fab(<span class="number">5</span>)</div><div class="line">    <span class="keyword">print</span> n</div></pre></td></tr></table></figure></p>
+<p>发现问题了吗？</p>
+<blockquote>
+<ul>
+<li>fab(max) 函数中同样使用循环</li>
+<li>一个使用 yeild，另一个使用 print 打印</li>
+<li>yeild 例子，需要自己循环调用才能一个一个打印出来</li>
+</ul>
+</blockquote>
+<p>这里我们推测<code>yeild</code>使用上的特点：</p>
+<blockquote>
+<ul>
+<li>暂停函数运行（要循环调用才管用）</li>
+<li>再次调用能从上次暂停的地方继续执行函数（数列是连续的）</li>
+<li>函数的每次运行都是遇到 yeild 就停止并返回迭代值，下次再用时继续</li>
+<li>对不起我编不下去了</li>
+</ul>
+</blockquote>
+<p>据说还有更强大的使用方式，下次有机会研究研究写个续吧：）</p>
+<hr>
+<p><strong>隔壁王叔叔的儿子的小姨子表示小伙子，你再努努力，我就跟你跑了。</strong></p>
+<p>例子取自：<a href="http://www.liaoxuefeng.com/article/001373892916170b88313a39f294309970ad53fc6851243000" target="_blank" rel="external">廖雪峰-Python yield使用浅析</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>思想无价<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/Image/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/Image/wxpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://ev1l.cn/2016/12/14/python_yeild1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/01/python_1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记python的一个坑</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="python_yeild1" data-title="你需要一个老头，帮助你理解下 Python 中的 yeild" data-url="http://ev1l.cn/2016/12/14/python_yeild1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"jazhLeo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 GeekaLeo
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">反人类</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">音乐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Leo</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">一个还是不要露脸比较好的人&lt;br/&gt;：）</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
