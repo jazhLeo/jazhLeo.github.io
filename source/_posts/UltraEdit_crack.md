@@ -15,7 +15,7 @@ tags:
 <!--more-->
 
 **注册过程**
-重新打开软件 -> 断网激活 -> 复制code1、code2 至注册机对应输入框后点击Generate -> 把生成代码粘贴至软件相应输入框中 -> 提交
+重新打开软件 -> 断网激活 -> 在注册机中选择对应软件并复制code1、code2 至注册机对应输入框后点击Generate -> 把生成代码粘贴至软件相应输入框中 -> 提交
 
 软件下载链接：
 [IDM All Products KeyGen v3.6](http://www.filehosting.org/file/details/640587/IDM%20All%20Products%20KeyGen%20v3.6.zip)
