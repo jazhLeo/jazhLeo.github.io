@@ -139,8 +139,8 @@ print(multiStr)
 
 ```python
 multiStr= ("select * from multi_row "
-"where row_id < 5 "
-"order by age") 
+            "where row_id < 5 "
+            "order by age")
 print(multiStr)
 
 #select * from multi_row where row_id < 5 order by age
