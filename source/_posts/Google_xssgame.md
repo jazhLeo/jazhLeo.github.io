@@ -299,7 +299,7 @@ next >> 的代码是这样：
 <script>
     setTimeout(function() { window.location = 'welcome'; }, 1000);
 </script>
-``` 
+```
 其中的'Welcome'像是我们 URL 中传入的参数。
 经传入其他参数测试，发现 window.location = 我们传入的参数。
 这样问题就简单了，首先，知识点你得有：
