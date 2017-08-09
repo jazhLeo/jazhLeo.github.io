@@ -68,7 +68,7 @@
 <meta property="og:image" content="http://ev1l.cn/Image/Level_8_Token_Not_Same.png">
 <meta property="og:image" content="http://ev1l.cn/Image/Level_8_Pass.png">
 <meta property="og:image" content="http://ev1l.cn/Image/All_Level_Pass.png">
-<meta property="og:updated_time" content="2017-08-04T06:26:49.532Z">
+<meta property="og:updated_time" content="2017-08-09T11:04:46.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「从入门到入狱系列」 - xssgame 通关经验(草稿)">
 <meta name="twitter:description" content="此链接只能墙外围观享用
@@ -236,7 +236,7 @@
 <p>此级别显示XSS的常见原因，其中用户输入直接写入页面而不进行正确的转义。<br>与下面的脆弱应用程序窗口进行交互，并找到一种方法来执行您选择的JavaScript。 您可以在易受攻击的窗口内采取行动，或直接编辑其网址栏。<br>输入一个将使应用程序在JavaScript中执行alert()函数的输入。<br>一旦您弹出警报，该解决方案将在服务器端进行验证，您将能够进入下一个级别。 重要的是，解决方案不需要用户交互 - 打开URL应该足以触发警报。<br>–来自原汁原味的 translate.google.com （自己感受下）</p>
 </blockquote>
 <p>「说人话！」</p>
-<p>通过改造URL，在访问原页面时执行 javascript 的 alert()，并且保证任何人直接访问你修改后的URL时都能弹出alert框 ang ng g ……。</p>
+<p>通过改造URL，在访问原页面时执行 javascript 的 alert()，并且保证任何人直接访问你修改后的URL时都能弹出alert框……。</p>
 <p>至于 javascript、alert 是什么，alert 与 XSS 到底是什么关系，为啥 XSS 的游戏要让你用 alert 过关呢，我就不赘述了，百度一下你就上当：）</p>
 <p>「上当咋整啊，本来就啥都不会，不能告诉个不上当的方法？」</p>
 <p>你别说，还真能：</p>
@@ -409,7 +409,7 @@
 <p><img src="/Image/Level_7_Pass_idea.png" alt="Level_7_Pass_idea"></p>
 <p>自己先想两分钟~</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">给 menu 传入经过 base64 编码后的：</div><div class="line">    &lt;script src=&apos;jsonp?callback=alert()%3B//&apos;&gt;&lt;/script&gt; // 转义前为：&lt;script src=&apos;jsonp?callback=alert();//&apos;&gt;&lt;/script&gt;</div><div class="line">会把</div><div class="line">    &lt;script src=&apos;jsonp?callback=alert();//&apos;&gt;&lt;/script&gt;</div><div class="line">显示在页面上，script 标签会尝试加载，触发一个请求，script 而请求的返回内容为：</div><div class="line">    alert();//(&#123;...&#125;)</div><div class="line">alert(); 后面被注释掉，执行 alert();</div></pre></td></tr></table></figure>
-<p>最后我们组织的 URL 为：<br><a href="http://www.xssgame.com/f/wmOM2q5NJnZS/?menu=PHNjcmlwdCBzcmM9J2pzb25wP2NhbGxiYWNrPWFsZXJ0KCklM0IvLyc+PC9zY3JpcHQ+" target="_blank" rel="external">http://www.xssgame.com/f/wmOM2q5NJnZS/?menu=PHNjcmlwdCBzcmM9J2pzb25wP2NhbGxiYWNrPWFsZXJ0KCklM0IvLyc+PC9zY3JpcHQ+</a></p>
+<p>最后我们组织的 URL 为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.xssgame.com/f/wmOM2q5NJnZS/?menu=PHNjcmlwdCBzcmM9J2pzb25wP2NhbGxiYWNrPWFsZXJ0KCklM0IvLyc+PC9zY3JpcHQ+</div></pre></td></tr></table></figure></p>
 <p>过关：</p>
 <p><img src="/Image/Level_7_Pass.png" alt="Level_7_Pass"></p>
 <h2 id="Level-8"><a href="#Level-8" class="headerlink" title="Level 8"></a>Level 8</h2><p><a href="http://www.xssgame.com/d9u16LTxchEi" target="_blank" rel="external">最后一关的贴心传送门 QAQ</a></p>
