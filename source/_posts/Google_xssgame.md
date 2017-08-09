@@ -34,7 +34,7 @@ tags:
 
 「说人话！」
 
-通过改造URL，在访问原页面时执行 javascript 的 alert()，并且保证任何人直接访问你修改后的URL时都能弹出alert框 ang ng g ……。
+通过改造URL，在访问原页面时执行 javascript 的 alert()，并且保证任何人直接访问你修改后的URL时都能弹出alert框……。
 
 至于 javascript、alert 是什么，alert 与 XSS 到底是什么关系，为啥 XSS 的游戏要让你用 alert 过关呢，我就不赘述了，百度一下你就上当：）
 
@@ -604,8 +604,9 @@ alert(); 后面被注释掉，执行 alert();
 
 ```
 最后我们组织的 URL 为：
+```
 http://www.xssgame.com/f/wmOM2q5NJnZS/?menu=PHNjcmlwdCBzcmM9J2pzb25wP2NhbGxiYWNrPWFsZXJ0KCklM0IvLyc+PC9zY3JpcHQ+
-
+```
 过关：
 
 ![Level_7_Pass](/Image/Level_7_Pass.png)
