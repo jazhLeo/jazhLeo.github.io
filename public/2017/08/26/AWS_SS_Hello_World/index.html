@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://ev1l.cn">
   <title>「从入门到入狱系列」 - AWS+SS 0成本徒手翻墙 | 灰色地带</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开篇日常BB前几天写了个「从入门到入狱系列」的文章，介绍了 xssgame 的通关经验，心里美滋滋。分享出来后，萌新 DaLao 们纷纷表示「这他妈根本打不开，看他妈的棒棒鸡」难道求学的欲望没有让你的内心躁动不安吗。  
-话说这一切的起因，要从古老的「GFW(Great Firewall)」说起。那是一个……  自！己！去！查！好，我们终于费劲笔墨终于把 GFW 讲完了，接下来我们说说：翻墙干嘛。">
+  <meta name="description" content="开篇日常BB前几天写了个「从入门到入狱系列」的文章，介绍了 xssgame 的通关经验，心里美滋滋。 
+分享出来后，萌新 DaLao 们纷纷表示「这他妈根本打不开，看他妈的棒棒鸡」难道求学的欲望没有让你的内心躁动不安吗。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「从入门到入狱系列」 - AWS+SS 0成本徒手翻墙">
 <meta property="og:url" content="http://ev1l.cn/2017/08/26/AWS_SS_Hello_World/index.html">
 <meta property="og:site_name" content="灰色地带">
-<meta property="og:description" content="开篇日常BB前几天写了个「从入门到入狱系列」的文章，介绍了 xssgame 的通关经验，心里美滋滋。分享出来后，萌新 DaLao 们纷纷表示「这他妈根本打不开，看他妈的棒棒鸡」难道求学的欲望没有让你的内心躁动不安吗。  
-话说这一切的起因，要从古老的「GFW(Great Firewall)」说起。那是一个……  自！己！去！查！好，我们终于费劲笔墨终于把 GFW 讲完了，接下来我们说说：翻墙干嘛。">
+<meta property="og:description" content="开篇日常BB前几天写了个「从入门到入狱系列」的文章，介绍了 xssgame 的通关经验，心里美滋滋。 
+分享出来后，萌新 DaLao 们纷纷表示「这他妈根本打不开，看他妈的棒棒鸡」难道求学的欲望没有让你的内心躁动不安吗。">
 <meta property="og:image" content="http://ev1l.cn/Image/askwiki.jpg">
 <meta property="og:image" content="http://ev1l.cn/Image/xiangbudaoba.jpg">
 <meta property="og:image" content="http://ev1l.cn/Image/laosiji.jpg">
@@ -35,11 +35,11 @@
 <meta property="og:image" content="http://ev1l.cn/Image/aws_ip_config.jpg">
 <meta property="og:image" content="http://ev1l.cn/Image/aws_ss_client_config.jpg">
 <meta property="og:image" content="http://ev1l.cn/Image/xingfu.jpg">
-<meta property="og:updated_time" content="2017-08-27T15:26:56.000Z">
+<meta property="og:updated_time" content="2017-08-27T15:43:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「从入门到入狱系列」 - AWS+SS 0成本徒手翻墙">
-<meta name="twitter:description" content="开篇日常BB前几天写了个「从入门到入狱系列」的文章，介绍了 xssgame 的通关经验，心里美滋滋。分享出来后，萌新 DaLao 们纷纷表示「这他妈根本打不开，看他妈的棒棒鸡」难道求学的欲望没有让你的内心躁动不安吗。  
-话说这一切的起因，要从古老的「GFW(Great Firewall)」说起。那是一个……  自！己！去！查！好，我们终于费劲笔墨终于把 GFW 讲完了，接下来我们说说：翻墙干嘛。">
+<meta name="twitter:description" content="开篇日常BB前几天写了个「从入门到入狱系列」的文章，介绍了 xssgame 的通关经验，心里美滋滋。 
+分享出来后，萌新 DaLao 们纷纷表示「这他妈根本打不开，看他妈的棒棒鸡」难道求学的欲望没有让你的内心躁动不安吗。">
 <meta name="twitter:image" content="http://ev1l.cn/Image/askwiki.jpg">
   
     <link rel="alternative" href="/atom.xml" title="灰色地带" type="application/atom+xml">
@@ -190,8 +190,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="开篇日常BB"><a href="#开篇日常BB" class="headerlink" title="开篇日常BB"></a>开篇日常BB</h2><p>前几天写了个「从入门到入狱系列」的文章，介绍了 xssgame 的通关经验，心里美滋滋。<br>分享出来后，萌新 DaLao 们纷纷表示「这他妈根本打不开，看他妈的棒棒鸡」<br>难道求学的欲望没有让你的内心躁动不安吗。<br><img src="/Image/askwiki.jpg" alt="askwiki">  </p>
-<p>话说这一切的起因，要从古老的<strong>「GFW(Great Firewall)」</strong>说起。<br>那是一个……  自！己！去！查！<br><img src="/Image/xiangbudaoba.jpg" alt="xiangbudaoba"><br>好，我们终于费劲笔墨终于把 GFW 讲完了，接下来我们说说：翻墙干嘛。<br>自！己！去！…… 还是说两句吧，要被打。<br>起初呢，是因为听说「w*w.s*x.c*m」「w*w.pr*nh*b.com」这些网站有一些「不可描述的东西」，后来呢，就出不来了……<br><img src="/Image/laosiji.jpg" alt="laosiji"></p>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1077483&auto=0&height=66"></iframe>   
+
+<h2 id="开篇日常BB"><a href="#开篇日常BB" class="headerlink" title="开篇日常BB"></a>开篇日常BB</h2><p>前几天写了个「从入门到入狱系列」的文章，介绍了 xssgame 的通关经验，心里美滋滋。 </p>
+<p>分享出来后，萌新 DaLao 们纷纷表示「这他妈根本打不开，看他妈的棒棒鸡」<br>难道求学的欲望没有让你的内心躁动不安吗。<br><img src="/Image/askwiki.jpg" alt="askwiki"><br><a id="more"></a><br>话说这一切的起因，要从古老的<strong>「GFW(Great Firewall)」</strong>说起。<br>那是一个……  自！己！去！查！<br><img src="/Image/xiangbudaoba.jpg" alt="xiangbudaoba"><br>好，我们终于费劲笔墨终于把 GFW 讲完了，接下来我们说说：翻墙干嘛。<br>自！己！去！…… 还是说两句吧，要被打。<br>起初呢，是因为听说「w*w.s*x.c*m」「w*w.pr*nh*b.com」这些网站有一些「不可描述的东西」，后来呢，就出不来了……<br><img src="/Image/laosiji.jpg" alt="laosiji"></p>
 <h2 id="关于免费与付费的-vpn"><a href="#关于免费与付费的-vpn" class="headerlink" title="关于免费与付费的 vpn"></a>关于免费与付费的 vpn</h2><p><strong>说来真是惭愧，人类始终对于繁衍后代有着执着且坚定的信念。「墙挡上了不让看？墙在哪呢？把墙扒了，我要看人儿！」</strong><br>萌新在日常生活中也会因为各种各样的原因接触到「翻墙」这个词汇，有点行动力的小伙伴可能会下载各种免费 vpn 软件来排解内心的寂寞。<br>但是呢，免费 vpn 的坑实在是太多了，萌新还是记住一点，天下没有免费的早餐、午餐、晚餐还有夜宵。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">┓┏┓┏┓┃</div><div class="line">┛┗┛┗┛┃＼○／</div><div class="line">┓┏┓┏┓┃  /      STOP</div><div class="line">┛┗┛┗┛┃ノ)</div><div class="line">┓┏┓┏┓┃         USE</div><div class="line">┛┗┛┗┛┃ </div><div class="line">┓┏┓┏┓┃         FREE</div><div class="line">┛┗┛┗┛┃ </div><div class="line">┓┏┓┏┓┃         VPN</div><div class="line">┃┃┃┃┃┃</div></pre></td></tr></table></figure></p>
 <p>这是余弦 DaLao 曾经发过的很经典的一个……一个……这叫啥？算了，就那么个玩意。</p>
 <p>那对萌新来讲，不使用「free vpn」应该换成哪些姿势呢。首先想到的可能是「付费 vpn」，付费的其实也一样有风险。<br>我们使用 vpn 时是把网络请求发给一个中间人，中间人帮你去请求，请求完以后再把得到的回复发给你。<br>这个过程中，你的风险成本是不随着「付费」和「免费」的转换而有所降低或上升的。<br>只能说付费的可能收了钱会相对的良心一点，但是我们不能把良心当作理所应当，你觉得呢。</p>
@@ -486,15 +488,15 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Leo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">反人类</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leo</a>
               </li>
             
             <div class="clearfix"></div>

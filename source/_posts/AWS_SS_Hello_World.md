@@ -8,13 +8,15 @@ tags:
     - 从入门到入狱
     - 工具
 ---
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1077483&auto=0&height=66"></iframe>   
 
 ## 开篇日常BB 
-前几天写了个「从入门到入狱系列」的文章，介绍了 xssgame 的通关经验，心里美滋滋。  
+前几天写了个「从入门到入狱系列」的文章，介绍了 xssgame 的通关经验，心里美滋滋。 
+
 分享出来后，萌新 DaLao 们纷纷表示「这他妈根本打不开，看他妈的棒棒鸡」
 难道求学的欲望没有让你的内心躁动不安吗。  
 ![askwiki](/Image/askwiki.jpg)  
-
+<!--more-->
 话说这一切的起因，要从古老的**「GFW(Great Firewall)」**说起。
 那是一个……  自！己！去！查！ 
 ![xiangbudaoba](/Image/xiangbudaoba.jpg)
