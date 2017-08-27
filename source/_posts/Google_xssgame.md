@@ -7,6 +7,7 @@ reward: true
 tags:
     - XSS
     - game
+    - 从入门到入狱
 ---
 
 此链接只能墙外围观享用
