@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="灰色地带">
 <meta property="og:description" content="日常编码时总会打开浏览器查查东西，再继续写代码。或者一边看着查出来的内容，一边对照着写自己的代码。 这个时候「码 - 浏览器搜索 - 对照着码」变成了一个经常出现的通用流程。 我们有几种方式来解决这件事情。  快捷键反复切换当前 window  页面如果是白底，编辑器恰好是黑底，那眼科欢迎你 非全屏下各占一半。  太硬性，不灵活，拉伸窗口步骤麻烦 双屏  能解决需求，但抱着笔记本跑的时候还是会碰到">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-01T17:42:06.337Z">
+<meta property="og:updated_time" content="2017-09-01T17:47:41.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把你的编辑器置顶吧 - AutoHotkey">
 <meta name="twitter:description" content="日常编码时总会打开浏览器查查东西，再继续写代码。或者一边看着查出来的内容，一边对照着写自己的代码。 这个时候「码 - 浏览器搜索 - 对照着码」变成了一个经常出现的通用流程。 我们有几种方式来解决这件事情。  快捷键反复切换当前 window  页面如果是白底，编辑器恰好是黑底，那眼科欢迎你 非全屏下各占一半。  太硬性，不灵活，拉伸窗口步骤麻烦 双屏  能解决需求，但抱着笔记本跑的时候还是会碰到">
@@ -181,7 +181,7 @@
 <a id="more"></a>
 <p>抱着这种需求，去网上搜索一番，发现了一个叫做 AutoHotkey 的工具。</p>
 <p>它的功能不少，如果有一些定制化的需求自己编写脚本来搞定。<br>比如我们这次的「窗口置顶」。<br>脚本代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">;==================================================</div><div class="line">;** 快捷键 Win+ESC 使当前窗口置顶/取消置顶</div><div class="line">;==================================================</div><div class="line"></div><div class="line">#Esc::</div><div class="line">WinSet, AlwaysOnTop, toggle,A</div><div class="line">WinGetTitle, getTitle, A</div><div class="line">Winget, getTop,ExStyle,A</div><div class="line">if (getTop &amp; 0x8)</div><div class="line">    TrayTip 已置顶, 窗口标题: `n%getTitle%,10,1</div><div class="line">else</div><div class="line">    TrayTip 取消置顶, 窗口标题:`n %getTitle%,10,1</div><div class="line">return</div></pre></td></tr></table></figure></p>
-<p>将脚本保存为后缀为「.ahk」的文件后，在程序里指定一下这个脚本文件，生成一个 exe 可执行程序(base file 选项记得选择 Unicode 64-bit 不然乱码)，双击新生成的 exe 图标就可以了。</p>
+<p>我们需要下载一个叫做 Auto Hotkey 的程序，然后将我们这个脚本保存为后缀为「.ahk」的文件后，在程序里指定一下这个脚本文件，生成一个 exe 可执行程序(base file 选项记得选择 Unicode 64-bit 不然乱码)，双击新生成的 exe 图标就可以了。</p>
 <p>至于更多的玩法大家自己探索吧。</p>
 
       
