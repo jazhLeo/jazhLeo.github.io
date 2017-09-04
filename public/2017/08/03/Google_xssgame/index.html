@@ -41,10 +41,12 @@
 <meta property="og:image" content="http://ev1l.cn/Image/Level_5_Pass.png">
 <meta property="og:image" content="http://ev1l.cn/Image/Level_6_Welcome.png">
 <meta property="og:image" content="http://ev1l.cn/Image/Level_6_Search.png">
+<meta property="og:image" content="http://ev1l.cn/Image/Level_6_Query.png">
 <meta property="og:image" content="http://ev1l.cn/Image/Level_6_Google_XSS.png">
 <meta property="og:image" content="http://ev1l.cn/Image/Level_6_PortSwigger.png">
 <meta property="og:image" content="http://ev1l.cn/Image/Level_6_Search_Para.png">
 <meta property="og:image" content="http://ev1l.cn/Image/hei2.jpeg">
+<meta property="og:image" content="http://ev1l.cn/Image/Level_6_Query_String.png">
 <meta property="og:image" content="http://ev1l.cn/Image/Level_6_Pass.png">
 <meta property="og:image" content="http://ev1l.cn/Image/Level_7_Welcome.png">
 <meta property="og:image" content="http://ev1l.cn/Image/Level_7_Web_DOM.png">
@@ -68,7 +70,7 @@
 <meta property="og:image" content="http://ev1l.cn/Image/Level_8_Token_Not_Same.png">
 <meta property="og:image" content="http://ev1l.cn/Image/Level_8_Pass.png">
 <meta property="og:image" content="http://ev1l.cn/Image/All_Level_Pass.png">
-<meta property="og:updated_time" content="2017-08-29T06:09:11.509Z">
+<meta property="og:updated_time" content="2017-09-04T07:10:42.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「从入门到入狱系列」 - xssgame 通关经验(草稿)">
 <meta name="twitter:description" content="此链接只能墙外围观享用 主站：www.xssgame.com">
@@ -338,9 +340,12 @@
 </blockquote>
 <p>这次我们看看页面代码，没什么特别的地方。用搜索功能搜一下发现有情况：</p>
 <p><img src="/Image/Level_6_Search.png" alt="Level_6_Search"></p>
+<p>手动输入 <strong>query</strong> 使用 get 方式搜索：</p>
+<p><img src="/Image/Level_6_Query.png" alt="Level_6_Query"></p>
+<p>我们注意到页面均显示出我们之前搜索的字符串。</p>
 <p>新的页面中的代码：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">ng-non-bindable</span>&gt;</span>Sorry, no results were found for <span class="tag">&lt;<span class="name">b</span>&gt;</span>1234<span class="tag">&lt;/<span class="name">b</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>‘ng-non-bindable’ 这个是在声明此段落不需要 AngularJS 来编译，也就是说我们上一关的套路不能用了。不过没关系，我们还有套路。</p>
+<p>‘ng-non-bindable’ 这个是在声明此段落不需要 AngularJS 来编译，也就是说我们上一关的套路不能用了。不过没关系，我们搞 form 中的那个。</p>
 <p>我们注意到这样一段代码：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>没记错的话之前那关是 1.5.x，我们都知道，软件要及时更新，不然漏洞会被利用搞事情。<br>这个反差好像就是在告诉我们这件事，那就去搜一下 bug 咯，google 一下。</p>
@@ -355,7 +360,7 @@
 <p>我们拼一下 URL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.xssgame.com/f/rWKWwJGnAeyi/?query=&#123;&#123;a=&apos;constructor&apos;;b=&#123;&#125;;a.sub.call.call(b[a].getOwnPropertyDescriptor(b[a].getPrototypeOf(a.sub),a).value,0,&apos;alert()&apos;)()&#125;&#125;</div></pre></td></tr></table></figure></p>
 <p>好，提交，过关：</p>
 <p><img src="/Image/hei2.jpeg" alt="heiren"></p>
-<p>过他妈的XX，这特么没反应啊。从头捋一捋……<br>(10分钟过去了……)<br>这他娘的没问题啊。是不是把符号过滤了啊：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">把&apos;&#123;&apos;、&apos;&#125;&apos;换成&apos;&amp;lcub;&apos;、&apos;&amp;rcub;&apos;试一下(google 来的~我也记不住是啥。)</div></pre></td></tr></table></figure></p>
+<p><img src="/Image/Level_6_Query_String.png" alt="Level_6_Query_String"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">把&apos;&#123;&apos;、&apos;&#125;&apos;换成&apos;&amp;lcub;&apos;、&apos;&amp;rcub;&apos;试一下(google 来的~我也记不住是啥。)</div><div class="line">也可以只替换&apos;&#123;&apos;,因为&apos;&#125;&apos;并没有被过滤，不过我查都查了，替！</div></pre></td></tr></table></figure></p>
 <p>新的 URL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.xssgame.com/f/rWKWwJGnAeyi/?query=&amp;lcub;&amp;lcub;a=&apos;constructor&apos;;b=&amp;lcub;&amp;rcub;;a.sub.call.call(b[a].getOwnPropertyDescriptor(b[a].getPrototypeOf(a.sub),a).value,0,&apos;alert()&apos;)()&amp;rcub;&amp;rcub;</div></pre></td></tr></table></figure></p>
 <p>冲啊，旋风冲锋龙…… 「能他妈不中二了吗？」：</p>
 <p><img src="/Image/Level_6_Pass.png" alt="Level_6_Pass"></p>

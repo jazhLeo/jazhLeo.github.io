@@ -411,13 +411,19 @@ http://www.xssgame.com/f/JFTG_t7t3N-P/?utm_term={{alert()}}
 
 ![Level_6_Search](/Image/Level_6_Search.png)
 
+手动输入 **query** 使用 get 方式搜索：
+
+![Level_6_Query](/Image/Level_6_Query.png)
+
+我们注意到页面均显示出我们之前搜索的字符串。
+
 新的页面中的代码：
 
 ```html
 <p ng-non-bindable>Sorry, no results were found for <b>1234</b>.</p>
 ```
 
-'ng-non-bindable' 这个是在声明此段落不需要 AngularJS 来编译，也就是说我们上一关的套路不能用了。不过没关系，我们还有套路。
+'ng-non-bindable' 这个是在声明此段落不需要 AngularJS 来编译，也就是说我们上一关的套路不能用了。不过没关系，我们搞 form 中的那个。
 
 我们注意到这样一段代码：
 
@@ -456,11 +462,10 @@ http://www.xssgame.com/f/rWKWwJGnAeyi/?query={{a='constructor';b={};a.sub.call.c
 
 ![heiren](/Image/hei2.jpeg)
 
-过他妈的XX，这特么没反应啊。从头捋一捋……
-(10分钟过去了……)
-这他娘的没问题啊。是不是把符号过滤了啊：
+![Level_6_Query_String](/Image/Level_6_Query_String.png)
 ```
 把'{'、'}'换成'&lcub;'、'&rcub;'试一下(google 来的~我也记不住是啥。)
+也可以只替换'{',因为'}'并没有被过滤，不过我查都查了，替！
 ```
 
 新的 URL：
