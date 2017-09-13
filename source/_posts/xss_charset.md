@@ -197,11 +197,9 @@ HTML 编码就是用来解决这件事情的，我们的 ‘<’ 字符可以用
 xssor 是开源项目，我们可以去 [xssor \[github\]](https://github.com/evilcos/xssor2) 「借鉴代码」。
 
 通过项目的页面代码，我们能能够找到我们需要的代码所在位置：
-
 ![xssor_github_ende](/Image/xssor_github_ende.png)
 
-我们到 github 上找到相应的方法，看具体实现：
-
+在页面的文件中找到对应方法，看具体实现：
 ![xssor_github_ende_function](/Image/xssor_github_ende_function.png)
 
 作为一个老司机，最重要的还是「心中无码」，我们只要看它的实现思想就好。
