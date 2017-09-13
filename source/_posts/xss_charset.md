@@ -194,8 +194,6 @@ HTML 编码就是用来解决这件事情的，我们的 ‘<’ 字符可以用
 其实自己写的难度不大，为什么这么说？因为 「[xssor.io](http://xssor.io/)」 已经实现了 10进制 与 16进制 的 encode、decode功能。  
 嗯，我们去「借鉴一下」。
 
-xssor 是开源项目，我们可以去 [xssor \[github\]](https://github.com/evilcos/xssor2) 「借鉴代码」。
-
 通过项目的页面代码，我们能能够找到我们需要的代码所在位置：
 ![xssor_github_ende](/Image/xssor_github_ende.png)
 
